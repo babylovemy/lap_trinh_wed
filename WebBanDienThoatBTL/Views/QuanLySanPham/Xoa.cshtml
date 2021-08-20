@@ -1,0 +1,103 @@
+﻿@model WebBanDienThoatBTL.Models.DienThoai
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;@Html.ActionLink("Quay Lại", "Index")
+<h2>Xóa</h2>
+
+<h3>Bạn muốn xóa?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </dt>
+
+        <dd>
+            <div id="AnhMoTa"><img src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" width="200" height="200" /></div>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiDienThoai.TenLDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiDienThoai.TenLDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaSanXuat.TenNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaSanXuat.TenNSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Moi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="background-color: #ffffff">
+            <input type="submit" value="Xóa" class="btn btn-default" /> <br />
+        </div>
+    }
+</div>

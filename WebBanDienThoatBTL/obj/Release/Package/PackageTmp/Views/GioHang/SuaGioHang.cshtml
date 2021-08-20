@@ -1,0 +1,80 @@
+﻿@using WebBanDienThoatBTL.Models;
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "Sửa Giỏ Hàng";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    /*Ẩn div body*/
+    #divNoiDungBenPhai {
+        display: none;
+    }
+
+    /*Ẩn slider (Ghi chú: Thẻ section bên trang NguoiDungLayOut.cshtml )*/
+    #divMenuSlider {
+        display: none;
+    }
+    
+    #divLoaiDT{
+        display:none;
+    }
+</style>
+<div id="suagiohang">
+    <h2>Sửa Giỏ Hàng</h2>
+</div>
+<table id="divGioHang">
+    <tr>
+        <td>Mã Điện Thoại</td>
+        <td>Tên</td>
+        <td>Hình Ảnh</td>
+        <td>Đơn Giá</td>
+        <td>Số Lượng</td>
+        <td>Thành Tiền</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+         <tr>
+            <td>@item.iMaDT</td>
+            <td>@item.sTenDT</td>
+            <td><img src="@Url.Content("~/HinhAnhSP/"+item.sAnhBia)" width="50" height="50" /></td>
+            <td>@String.Format("{0:0,0}", item.dDonGia) VNĐ</td>
+            @*Chỉnh sửa giỏ hàng*@
+            @using (Html.BeginForm("CapNhapGioHang", "GioHang", new { @iMaSP = item.iMaDT }))
+            {
+                 <td>@Html.TextBox("txtSoLuong", item.iSoLuong)</td>
+                 <td>@String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
+                 <td><input type="submit" value="Cập nhập" />
+                 <br />
+                 @Html.ActionLink("Xóa", "XoaGioHang", new {@iMaSP = item.iMaDT})
+                 </td>
+            }
+         </tr>
+    }
+    <tr>
+        <td colspan="6" style="text-align:right; color:blue">
+            <a href="@Url.Action("GioHang","GioHang")">
+                <input type="submit" value="Quay Lại" />
+            </a>
+        </td>
+    </tr>
+</table>
+
+@*Css giỏ hàng*@
+<style>
+    #suagiohang{
+        font-family: 'Times New Roman';
+        font-weight: bold;
+        text-align: center;
+        color: black;
+    }
+    #divGioHang {
+        border: 1px solid #EEEEEE;
+        margin-left: 15%;
+    }
+
+        #divGioHang td {
+            padding: 10px;
+            border: 1px solid #EEEEEE;
+        }
+</style>

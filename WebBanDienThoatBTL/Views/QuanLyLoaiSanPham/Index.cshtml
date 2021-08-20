@@ -1,0 +1,48 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<WebBanDienThoatBTL.Models.LoaiDienThoai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>Quản lý loại điện thoại</h2>
+
+<p>
+    <i class="fa fa-plus" aria-hidden="true"></i>    @Html.ActionLink("Thêm Mới", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaLDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenLDT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaLDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLDT)
+        </td>
+        <td>
+            <a href="@Url.Action("HienThi","QuanLyLoaiSanPham", new { @MaLDT = item.MaLDT })">
+                <i class="icon-eye-open"></i>
+            </a>
+            <a href="@Url.Action("ChinhSua","QuanLyLoaiSanPham", new { @MaLoaiDienThoai = item.MaLDT })">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+            <a href="@Url.Action("Xoa","QuanLyLoaiSanPham", new { @MaLDT = item.MaLDT })">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

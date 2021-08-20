@@ -1,0 +1,105 @@
+﻿@using WebBanDienThoatBTL.Models;
+@model DienThoai
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+@*<style>
+    /*Ẩn div body*/
+    #divNoiDungBenPhai {
+        display: none;
+    }
+
+    /*Ẩn slider (Ghi chú: Thẻ section bên trang NguoiDungLayOut.cshtml )*/
+    #divMenuSlider {
+        display: none;
+    }
+</style>*@
+
+
+
+@*Mô tả chi tiết điện thoại*@
+<div id="xemchitiet">
+    <div id="HinhAnh"><img src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" width="200" height="200" alt="Image" /></div>
+    <div id="ThongTin">
+        <div id="TenDT">@Model.TenDT</div>
+        @*<div id="HangDT">Hãng: @ViewBag.TenNSX</div>
+        <div id="LoaiDT">Hệ Điều Hành: @ViewBag.LoaiDT</div>*@
+        <div id="MoTa">Thông tin: @Html.Raw(Model.Mota)</div>
+        <div id="Gia"><span style="color: green; font-weight:normal;">Đơn Giá:</span><br /><span id="Gia">@string.Format("{0:0,0}", @Model.GiaBan) VNĐ</span></div>
+        <br />
+        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaDT = Model.MaDT, @strURL = Request.Url.ToString() }))
+        {
+            <input type="submit" style="cursor:pointer" value="Mua Hàng" id="btnGioHang" class="btn btn-primary" />
+        }
+    </div>
+    <div style="clear:both"></div>
+</div>
+@*Css thong tin dien thoai*@
+<style>
+    #xemchitiet{
+        margin-left:300px;
+    }
+    #HinhAnh{
+        float: left;
+    }
+    #ThongTin{
+        float:left;
+        width:600px;
+    }
+    #TenDT{
+        font-weight:normal;
+        font-size:20pt;
+        height:auto;
+        color: black;
+        font-weight: bold;
+        font-family:'Times New Roman';
+    }
+    #HangDT{
+        font-weight:normal;
+        font-size:15pt;
+        height:auto;
+        color: black;
+        font-family:'Times New Roman';
+        margin-left:5px;
+    }
+    #LoaiDT{
+        font-weight:normal;
+        font-size:15pt;
+        height:auto;
+        color: black;
+        font-family:'Times New Roman';
+        margin-left:5px;
+    }
+    #MoTa{
+        font-weight: normal;
+        color: black;
+        word-wrap: break-word;
+        height: auto;
+        margin-left:10px;
+        text-align:justify;
+        font-family:'Times New Roman';
+    }
+    #Gia{
+        font-family:'Times New Roman';
+    }
+    #Gia span#Gia{
+        font-weight: normal;
+        color: orange;
+        font-size: 20pt;
+        height: auto;
+        font-family:'Times New Roman';
+    }
+    #btnGioHang{
+        font-family: 'FontAwesome','Segoe UI';
+        background-color: red;
+        height: 50px;
+        width:100px;
+        font-family:'Times New Roman';
+    }
+    #btnGioHang:hover{
+        background-color: #a30a11;
+    }
+</style>
+

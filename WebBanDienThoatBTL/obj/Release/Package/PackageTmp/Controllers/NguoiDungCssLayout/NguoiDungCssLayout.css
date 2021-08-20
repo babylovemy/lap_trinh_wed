@@ -1,0 +1,97 @@
+﻿/*Sử dụng độ rộng toàn trang*/
+#ToanTrang{
+    position: relative;
+    font-family:'Times New Roman';
+    font-weight:bold;
+    background:#FFF;
+}
+
+/*Thiết kế link đăng ký đăng nhập*/
+.DangKyDangNhap{
+    float: right;
+    margin-top:-1%;
+}
+
+.DangKyDangNhap a:hover{
+    text-decoration:none;
+    color: red;
+}
+
+.DienThoai{
+    float: left;
+    margin-top:-1%;
+}
+/*css divDanhMuc*/
+#divDanhMuc{
+    height: 30px;
+}
+
+/*Css Menu Header*/
+.navMenu{
+    float:right;
+}
+.navMenu li{
+    display:inline;
+    border-right:solid 1px rgba(0,0,0,.1);
+    padding:20px;
+    padding-top:19px;
+    padding-bottom:22px;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+}
+/*Css hover thay doi mau cham*/
+.navMenu li:hover{
+    background-color:rgba(0,0,0,.5);
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+}
+.navMenu a:hover{
+    text-decoration:none;
+}
+
+/*css tìm kiếm*/
+#txtTimKiem{
+    float:left;
+    margin-left: 5%;
+}
+#txtTimKiem input{
+    height: 0px;
+}
+/*css image button tim kiem*/
+#divHinhAnhTimKiem button{
+    margin-right:-60px;
+    padding:0 10px 0 10px;
+    background-color: #14a19a;
+}
+#divHinhAnhTimKiem button:hover{
+    background-color:rgba(0,0,0,.5);
+}
+#divHinhAnhTimKiem img{
+    width:30px;
+    height:30px;
+}
+/*Css cho novoslider*/
+#slider{
+    float: right;
+    width: 980px;
+    height: 360px;
+}
+#slider img{
+    width: 980px;
+    height: 360px;
+}
+#divMenuLeft{
+    float: left;
+}
+#divLeft{
+    width:24%;
+    float:left;
+}
+#divLeft .item{
+    width:100%;
+}
+#divright{
+    width:20%;
+    float:right;
+    word-break:break-all;
+}

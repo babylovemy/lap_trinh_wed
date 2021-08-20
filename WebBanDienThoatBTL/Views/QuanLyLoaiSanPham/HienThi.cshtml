@@ -1,0 +1,36 @@
+﻿@model WebBanDienThoatBTL.Models.LoaiDienThoai
+
+@{
+    ViewBag.Title = "HienThi";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div>
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;@Html.ActionLink("Quay Lại", "Index")
+</div>
+<h2>Chi Tiết Loại Sản Phẩm</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLDT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;&nbsp;@Html.ActionLink("Sửa", "ChinhSua", new { @MaLoaiDienThoai = Model.MaLDT }) <br />
+</p>

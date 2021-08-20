@@ -1,0 +1,40 @@
+﻿@model WebBanDienThoatBTL.Models.LoaiDienThoai
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+
+<i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;@Html.ActionLink("Quay Lại", "Index")
+<h2>Xóa</h2>
+
+<h3>Bạn có muốn xóa thông tin?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLDT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color" style="background-color: #ffffff; margin-left:10px">
+            <input type="submit" value="Xóa" class="btn btn-default" /> <br />
+        </div>
+    }
+</div>

@@ -1,0 +1,19 @@
+﻿@using WebBanDienThoatBTL.Models;
+@*Định nghĩa kiểu dữ liệu cho biến Model*@
+@model List<DienThoai>
+
+<h1 class="item-header">Điện thoại phổ biến</h1>
+@{
+    foreach (var item in Model)
+    {
+        <div class="activity-list-update">
+            <img src="@Url.Content("~/HinhAnhSP/" + item.AnhBia)" width="50" height="50" alt="Image">
+            <p><strong>@item.TenDT</strong><br /><a href="@Url.Action("XemChiTiet",new {@MaDT = item.MaDT})">Xem chi tiết</a>.</p>
+            <div class="clear"></div>
+        </div>
+    }
+
+}
+<a href="#" class="item-footer green">
+    Mua nhiều nhất
+</a>

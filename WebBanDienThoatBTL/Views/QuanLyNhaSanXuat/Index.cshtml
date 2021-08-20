@@ -1,0 +1,60 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<WebBanDienThoatBTL.Models.NhaSanXuat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <i class="fa fa-plus" aria-hidden="true"></i>    @Html.ActionLink("Thêm Mới", "themmoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaNSX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenNSX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DienThoai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNSX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenNSX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienThoai)
+        </td>
+        <td>
+            <a href="@Url.Action("HienThi","QuanLyNhaSanXuat", new { @MaNSX = item.MaNSX })">
+                <i class="icon-eye-open"></i>
+            </a>
+            <a href="@Url.Action("ChinhSua","QuanLyNhaSanXuat", new { @MaNSX = item.MaNSX })">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+            <a href="@Url.Action("Xoa","QuanLyNhaSanXuat", new { @MaNSX = item.MaNSX })">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

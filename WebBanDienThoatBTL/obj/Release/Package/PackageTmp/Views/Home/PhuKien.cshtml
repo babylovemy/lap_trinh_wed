@@ -1,0 +1,49 @@
+﻿@using WebBanDienThoatBTL.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<DienThoai>
+
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "MayTinhBang";
+    Layout = "~/Views/Home/MBT.cshtml";
+}
+
+@*divBody trang index*@
+<div id="divTit">
+    <h2>Phụ Kiện</h2><hr />
+</div>
+<div id="divBody">
+    @foreach (var item in Model)
+    {
+        <div id="SanPham">
+            <a href="@Url.Action("XemChiTiet","DienThoai", new {@MaDT = item.MaDT})">
+                <div id="AnhMoTa"><img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="200" height="200" /></div>
+            </a>
+            <div id="ThongTin">
+                <div id="TenDT" title="@item.TenDT"> @item.TenDT</div>
+                <br />
+                <div id="DonGia" style="color:orange"><font color="Green">Giá bán:</font>@String.Format("{0:0,0}", item.GiaBan) VNĐ</div>
+            </div>
+            <div id="GioHang">
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaDT = item.MaDT, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" style="cursor:pointer" value="Mua Hàng" id="btnGioHang" class="btn btn-primary" />
+                }
+            </div>
+        </div>
+    }
+</div>
+<div style="clear:both"></div>
+<style>
+    .MenuTrang li {
+        display: inline-block;
+        justify-content: center;
+    }
+
+    #divTit {
+        color: #000000;
+        margin-left: 20px;
+    }
+</style>
+
+

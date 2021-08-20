@@ -1,0 +1,76 @@
+﻿@using WebBanDienThoatBTL.Models;
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    /*Ẩn div body*/
+    #divNoiDungBenPhai {
+        display: none;
+    }
+
+    /*Ẩn slider (Ghi chú: Thẻ section bên trang NguoiDungLayOut.cshtml )*/
+    #divMenuSlider {
+        display: none;
+    }
+    #divLoaiDT{
+        display:none;
+    }
+</style>
+<div id="giohang">
+    <h2>Giỏ Hàng</h2>
+</div>
+<table id="divGioHang">
+    <tr>
+        <td>Mã Điện Thoại</td>
+        <td>Tên</td>
+        <td>Hình Ảnh</td>
+        <td>Đơn Giá</td>
+        <td>Số Lượng</td>
+        <td>Thành Tiền</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.iMaDT</td>
+            <td>@item.sTenDT</td>
+            <td><a href="@Url.Action("XemChiTiet","DienThoai", new {@MaDt = item.iMaDT })"><img src="@Url.Content("~/HinhAnhSP/"+item.sAnhBia)" width="50" height="50" /></a></td>
+            <td>@String.Format("{0:0,0}", item.dDonGia) VNĐ</td>
+            <td>@item.iSoLuong</td>
+            <td>@String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="6" style="text-align:right; color:blue">
+            @Html.ActionLink("Chỉnh sửa giỏ hàng", "SuaGioHang")
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6" style="text-align:right; color:blue">
+            @using (Html.BeginForm("DatHang", "GioHang"))
+            {
+                <input type="submit" value="Đặt Hàng" />
+            }
+        </td>
+    </tr>
+</table>
+
+@*Css giỏ hàng*@
+<style>
+    #giohang{
+        font-family: 'Times New Roman';
+        font-weight: bold;
+        text-align: center;
+        color: black;
+    }
+    #divGioHang{
+        border: 1px solid #EEEEEE;
+        margin-left:25%;
+    }
+    #divGioHang td{
+        padding:10px;
+        border: 1px solid #EEEEEE;
+    }
+</style>

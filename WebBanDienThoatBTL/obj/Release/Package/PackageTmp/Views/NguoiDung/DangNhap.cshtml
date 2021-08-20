@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    /*Ẩn div body*/
+    #divNoiDungBenPhai {
+        display: none;
+    }
+
+    /*Ẩn slider (Ghi chú: Thẻ section bên trang NguoiDungLayOut.cshtml )*/
+    #divMenuSlider {
+        display: none;
+    }
+
+    #divLoaiDT {
+        display: none;
+    }
+</style>
+<div id="divHeader">
+    <h2>Đăng Nhập</h2>
+    <h1>@ViewBag.ThongBao</h1>
+</div>
+@using (Html.BeginForm())
+{
+    <div id="divDN">
+        <span>Tài Khoản:</span><br />
+        <input name="txtTaiKhoan" id="txtTaiKhoan" type="text" />
+        <br />
+        <span>Mật Khẩu:</span><br />
+        <input name="txtMatKhau" id="txtMatKhau" type="password" />
+        <br />
+        <input type="submit" id="btnSubmit" name="btnSubmit" value="Đăng Nhập" /> 
+    </div>
+}
+<style>
+    #divHeader{
+        text-align:center;
+        color: black;
+        font-weight:bold;
+    }
+    #divDN{
+        margin-left: 40%;
+    }
+    #divDN span{
+        color:black;
+    }
+    #txtTaiKhoan{
+        margin-left:2px;
+    }
+    #txtMatKhau{
+        margin-left:2px;
+    }
+</style>
+

@@ -1,0 +1,99 @@
+﻿@model WebBanDienThoatBTL.Models.DienThoai
+
+@{
+    ViewBag.Title = "HienThi";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;@Html.ActionLink("Quay Lại", "Index")
+
+<h2>Chi Tiết Sản Phẩm</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhAnhSP/"+Model.AnhBia)" width="200" height="200" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiDienThoai.TenLDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiDienThoai.TenLDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaSanXuat.TenNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaSanXuat.TenNSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Moi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;&nbsp;@Html.ActionLink("Sửa", "ChinhSua", new { @MaDienThoai = Model.MaDT }) <br />
+</p>

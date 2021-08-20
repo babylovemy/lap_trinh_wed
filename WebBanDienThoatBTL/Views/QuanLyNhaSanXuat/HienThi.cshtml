@@ -1,0 +1,53 @@
+﻿@model WebBanDienThoatBTL.Models.NhaSanXuat
+
+@{
+    ViewBag.Title = "HienThi";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+
+<i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;@Html.ActionLink("Quay Lại", "Index")
+
+
+<h2>Chi Tiết Nhà Sản Xuất</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <i class="fa fa-cog" aria-hidden="true"></i>&nbsp;&nbsp;@Html.ActionLink("Sửa", "ChinhSua", new { @MaNSX = Model.MaNSX }) <br />
+</p>

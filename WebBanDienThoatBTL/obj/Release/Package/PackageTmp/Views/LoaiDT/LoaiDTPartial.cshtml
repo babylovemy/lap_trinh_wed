@@ -1,0 +1,18 @@
+﻿@using WebBanDienThoatBTL.Models;
+@model List<LoaiDienThoai>
+
+@foreach (var item in Model)
+{
+    <a id="btnLoaiDT" href="@Url.Action("DTTheoLoai", new {@MaLDT = item.MaLDT })" class="button"><center>@item.TenLDT</center></a>
+}
+<style>
+    #btnLoaiDT{
+        width:250px;
+        font-size:14pt; 
+        color: aliceblue; 
+        background-color:#0855bd; 
+        text-decoration: none; 
+        margin-left: 130px;
+    }
+</style>
+<div style="clear:both"></div>

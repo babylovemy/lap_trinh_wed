@@ -1,0 +1,63 @@
+﻿@using WebBanDienThoatBTL.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<DienThoai>
+
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+@*@section NoiDungBenPhai{
+    
+}*@
+@*divBody trang index*@
+<div id="divTit">
+    <h2>Điện Thoại</h2><hr />
+</div>
+<div id="divBody">
+    @*@{ int i = 0;}*@
+    @foreach(var item in Model)
+    {
+        //i++;
+        <div id="SanPham">
+            <a href="@Url.Action("XemChiTiet","DienThoai", new {@MaDT = item.MaDT})">
+            <div id="AnhMoTa"><img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="200" height="200" /></div></a>
+            <div id="ThongTin">
+                <div id="TenDT"title="@item.TenDT"> @item.TenDT</div>
+                <br />
+                <div id="DonGia" style="color:orange"><font color="Green">Giá bán:</font>@String.Format("{0:0,0}",item.GiaBan) VNĐ</div>
+            </div>
+            <div id="GioHang">
+                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaDT = item.MaDT, @strURL = Request.Url.ToString() }))
+                {
+                    <input type="submit" style="cursor:pointer" value="Mua Hàng" id="btnGioHang" class="btn btn-primary" />
+                }
+            </div>
+        </div>
+        
+        @*if(i%6 == 0)
+        {
+            <div style="clear:both"></div>
+        }*@
+    }
+</div>
+<div style="clear:both"></div>
+@*Tạo linh liên kết của các trang*@
+@*<div class="MenuTrang">
+    <center>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </center>
+</div>*@
+@Html.Action("MayTinhBang", "Home")
+@Html.Action("PhuKien", "Home")
+<style>
+    .MenuTrang li{
+        display:inline-block;
+        justify-content: center;
+    }
+    #divTit{
+        color:#000000;
+        margin-left:20px;
+    }
+</style>

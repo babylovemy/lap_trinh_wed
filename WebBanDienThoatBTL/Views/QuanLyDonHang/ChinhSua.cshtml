@@ -1,0 +1,105 @@
+﻿@model WebBanDienThoatBTL.Models.DonHang
+
+@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<div>
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;@Html.ActionLink("Quay Lại", "Index")
+</div>
+<h2>Sửa Đơn Hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <dl class="form-group">
+            <dt>
+                @Html.LabelFor(model => model.MaDonHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            </dt>
+            <dd class="col-md-10">
+                @Html.TextBoxFor(model => model.MaDonHang, new { style = "width: 206px; background:#EEEEEE; margin-left:5px;", disabled = "disabled"})
+                @*<span style="font-size:15px; margin-top:2px; margin-left: 5px">@Model.MaDonHang</span>*@
+                @Html.Hidden("MaDonHang", Model.MaDonHang)
+            </dd>
+        </dl>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DaThanhToan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DaThanhToan, new { style = "width: 206px; background:#FFF; margin-left:5px;" })
+                @Html.ValidationMessageFor(model => model.DaThanhToan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TinhTrangGiaoHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TinhTrangGiaoHang, new { style = "width: 206px; background:#FFF; margin-left:5px;" })
+                @Html.ValidationMessageFor(model => model.TinhTrangGiaoHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <dl class="form-group">
+            <dt>
+                @Html.LabelFor(model => model.NgayDat, htmlAttributes: new { @class = "control-label col-md-2" })
+            </dt>
+            <dd class="col-md-10">
+                @Html.TextBoxFor(model => model.NgayDat, new { style = "width: 206px; background:#EEEEEE; margin-left:5px;", disabled = "disabled" })
+                @*<span style="font-size:15px; margin-top:2px; margin-left: 5px">@Model.NgayDat</span>*@
+                @Html.Hidden("NgayDat", Model.NgayDat)
+            </dd>
+        </dl>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayGiao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayGiao, new { style = "width: 206px; background:#FFF; margin-left:5px;" })
+                @Html.ValidationMessageFor(model => model.NgayGiao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <dl class="form-group">
+            <dt>
+                @Html.LabelFor(model => model.MaKH, htmlAttributes: new { @class = "control-label col-md-2" })
+            </dt>
+            <dd class="col-md-10">
+                @Html.TextBoxFor(model => model.KhachHang.HoTen, new { style = "width: 206px; background:#EEEEEE; margin-left:5px;", disabled = "disabled" })
+                @*<span style="font-size:15px; margin-top:2px; margin-left: 5px">@Model.KhachHang.HoTen</span>*@
+                @Html.Hidden("MaKH", Model.MaKH)
+            </dd>
+        </dl>
+
+        <dl class="form-group">
+            <dt>
+                @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+            </dt>
+            <dd class="col-md-10">
+                @Html.TextBoxFor(model => model.DiaChi, new { style = "width: 206px; background:#EEEEEE; margin-left:5px;", disabled = "disabled" })
+                @*<span style="font-size:15px; margin-top:2px; margin-left: 5px">@Model.DiaChi</span>*@
+                @Html.Hidden("DiaChi", Model.DiaChi)
+            </dd>
+        </dl>
+
+        <dl class="form-group">
+            <dt>
+                @Html.LabelFor(model => model.DienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            </dt>
+            <dd class="col-md-10">
+                @Html.TextBoxFor(model => model.DienThoai, new { style = "width: 206px; background:#EEEEEE; margin-left:5px;", disabled = "disabled" })
+                @*<span style="font-size:15px; margin-top:2px; margin-left: 5px">@Model.DienThoai</span>*@
+                @Html.Hidden("DienThoai", Model.DienThoai)
+            </dd>
+        </dl>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

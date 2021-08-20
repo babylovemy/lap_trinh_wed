@@ -1,0 +1,80 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using System.Web.Mvc;
+@using WebBanDienThoatBTL.Models;
+@model PagedList.PagedList<DonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>Danh Sách Đơn Hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaDonHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DaThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TinhTrangGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DienThoai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDonHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienThoai)
+        </td>
+        <td>
+            <a href="@Url.Action("HienThi","QuanLyDonHang", new { @MaDonHangChiTiet = item.MaDonHang})">
+                <i class="icon-eye-open"></i>
+            </a>
+            <a href="@Url.Action("ChinhSua","QuanLyDonHang", new { @MaDonHang = item.MaDonHang })">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

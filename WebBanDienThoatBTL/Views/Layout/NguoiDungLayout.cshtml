@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*Chèn link css*@
+    <link href="~/Controllers/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Controllers/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+    @*Chèn css thiết kế*@
+    <link href="~/Controllers/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*Chèn link css, javascript nivoslider*@
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+</head>
+<body>
+    <div id="ToanTrang" style="font-family:'Times New Roman'; background:#ffffff">
+    <section class="blank">
+        <div class="flash">
+            <div class="DienThoai">
+                036034975
+            </div>
+            @*Tạo div đăng ký đăng nhập*@
+            <div class="DangKyDangNhap">
+                @Html.Action("GioHangPartial", "GioHang")
+                <div style="float:right; margin-left:10px;">
+                    @*Lấy tên người dùng khi đăng nhập*@
+                    @using System.Web.Mvc;
+                    @using WebBanDienThoatBTL.Models;
+                    @{
+                        var kh = (KhachHang)Session["TaiKhoan"];
+                    }
+                    @if (kh == null)
+                    {
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        @Html.ActionLink("Đăng ký", "DangKy", "NguoiDung", null, htmlAttributes: new { @class = "DangKy" })
+                        <i class="fa fa-sign-in"></i>
+                        @Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung", null, htmlAttributes: new { @class = "DangNhap" })
+                    }
+                    else
+                    {
+                        <div style="float: left; height:auto; margin-right: 5px;">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            Xin Chào: @kh.HoTen
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            @Html.ActionLink("Đăng Xuất", "Thoat", "NguoiDung")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        @*Xây dụng div menu header*@
+        <div class="flash success" id="divDanhMuc">
+            @*Hộp thoại tìm kiếm*@
+            <div id="txtTimKiem">
+                @using (Html.BeginForm("KetQuaTimKiem","TimKiem", FormMethod.Post))
+                {
+                    @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Tìm kiếm ..." })
+                    <div id="divHinhAnhTimKiem">
+                        <button type="submit"><img src="~/HinhAnh/search.png" /></button>
+                    </div>
+                }
+            </div>
+            @*Xây dụng div menu bên phải*@
+            <ul class="navMenu">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Trang Chủ</a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/bebaaaini?utm_medium=copy_link">Hỗ Trợ INSTAGRAM</a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/profile.php?id=100006767719483">Hỗ Trợ FACEBOOK</a>
+                </li>
+                @*<li>
+                    <a href="#">Liên Hệ</a>
+                </li>
+                <li>
+                    <a href="#">Hướng dẫn</a>
+                </li>
+                <li>
+                    <a href="#">Điện Thoại</a>
+                </li>*@
+            </ul>
+        </div>
+    </section>
+    
+    <section id="divMenuSlider">
+        @*Div Menu trái*@
+        <div id="divMenuLeft">
+            @*Chèn vào partial view Dien thoai pho bien*@
+            <div class="activity" style="height:360px">
+                @Html.Action("DienThoaiPartial","DienThoai")
+            </div>
+        </div>
+        @*Chèn div nivo slider*@
+        <div id="slider" class="nivoSlider" style="width:980px">
+            <img src="~/HinhAnh/d.jpg" />
+            <img src="~/HinhAnh/e.jpg" />
+            <img src="~/HinhAnh/g.jpg" />
+        </div>
+        <div style="clear:both"></div>
+    </section>
+        <hr>
+        @*Div body*@
+        <div id="Noidung">
+            @RenderBody()
+        </div>
+        <hr>
+    <section id="divLoaiDT">
+        @*Phân loại điện thoại*@
+        <div id="divChuDe">
+            @Html.Action("LoaiDTPartial", "LoaiDT")
+        </div>
+        <hr>
+    </section>
+    @*Div hãng sản xuất*@
+    <section class="blank items" id="divhangsanxuat">
+        <div id="divLeft" style="margin-left:3%;">
+            @*Action partialview hãng san xuat*@
+            @Html.Action("NhaSanXuatPartial", "NhaSanXuat")
+        </div>
+        <div id="divTT" style="margin-left:23%; width:50%">
+            @*@RenderSection("ThongTin", false)*@
+            <div>
+                <div style="width:45%; float: left;">
+                    <h3><span style="color:#0094ff">HỖ TRỢ THANH TOÁN</span><br /></h3>
+                    <i class="fa fa-money" aria-hidden="true" style="margin-right:10px"></i><span>Thanh Toán Trực Tiếp</span><br />
+                    <i class="fa fa-credit-card" aria-hidden="true" style="margin-right:10px"></i><span>Thẻ ATM</span><br />
+                    <i class="fa fa-exchange" aria-hidden="true" style="margin-right:10px"></i><span>Chuyển Khoản</span><br />
+                    <i class="fa fa-cc-visa" aria-hidden="true" style="margin-right:10px"></i><span>Thẻ Visa</span><br />
+                </div>
+                <div style="width:45%; float: right">
+                    <h3><span style="color:#0094ff">CHI NHÁNH BÁN HÀNG</span></h3><br />
+                    <span>TÂN HỘI,TÂN HIỆP,TX.TÂN UYÊN,BÌNH DƯƠNG</span><br />
+                </div>
+            </div>
+        </div>
+        <div id="divright" style="float:right; width:20%; margin-top:-9%;">
+            @*@RenderSection("NoiDungBenPhai", false)*@
+            <h3><span style="color:#0094ff">THÔNG TIN LIÊN HỆ</span></h3>
+            <div>
+                <i class="fa fa-envelope" aria-hidden="true" style="margin-right:10px"></i><span>thuantran0752001@gmail.com</span><br />
+                <i class="fa fa-facebook-square" aria-hidden="true" style="margin-right:10px"></i><span>DienThoaiVN</span><br />
+                <i class="fa fa-phone-square" aria-hidden="true" style="margin-right:10px"></i><span>0369034975</span>
+            </div>
+        </div>
+    </section>
+        <div>
+            @*<a href="#" class="button button-buy">MY PHONE</a>*@
+            <span class="button button-buy"></span>
+        </div>
+  </div>
+    @*div chạy nivo slider*@
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                controlNav: false,
+                prevText: '',
+                nextText: '',
+            });
+        });
+    </script>
+</body>
+</html>
